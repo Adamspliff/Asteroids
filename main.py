@@ -1,4 +1,5 @@
 import pygame
+import sys 
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -36,13 +37,15 @@ def main():
         screen.fill((0,0,0))
         
         updatable.update(dt)
-
+        
+        for a in asteroids:
+            if player.collision(a):
+                print("Game over!")
+                sys.exit()                   
+        
         for i in drawable:
             i.draw(screen)
-        #drawable.draw(screen) would work (pygame draws everything with sprite.image and sprite.rect)
-
-        
-        
+        #drawable.draw(screen) should work (but does not) bc pygame draws everything with sprite.image and sprite.rect        
 
         pygame.display.flip()
         dt = clock.tick(60) / 1000
