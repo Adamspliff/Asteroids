@@ -2,6 +2,8 @@ from circleshape import CircleShape
 from shot import Shot
 from constants import *
 import pygame 
+import random
+
 #from main import *
 
 
@@ -35,7 +37,7 @@ class Player(CircleShape):
 
     def draw(self, screen):
         
-        pygame.draw.polygon(screen,"white",self.triangle(),2)
+        pygame.draw.polygon(screen,(random.choices(range(256), k=3)),self.triangle(),2)
 
     def rotate(self, dt):
 
